@@ -1,25 +1,8 @@
+import * as angular from 'angular';
+
 angular.module('todoApp')
   .component('todo', {
-    // templateUrl: 'src/old-app/components/todo.comp.html',
-    template: `
-<h1>I'm AngularJs 1</h1>
-<div>
-    <span>{{$ctrl.remaining()}} of {{$ctrl.todos.length}} remaining</span>
-    [ <a href="" ng-click="$ctrl.archive()">archive</a> ]
-    <ul class="unstyled">
-        <li ng-repeat="todo in $ctrl.todos">
-            <label class="checkbox">
-                <input type="checkbox" ng-model="todo.done">
-                <span class="done-{{todo.done}}">{{todo.text}}</span>
-            </label>
-        </li>
-    </ul>
-    <form ng-submit="$ctrl.addTodo()">
-        <input type="text" ng-model="$ctrl.todoText"  size="30"
-               placeholder="add new todo here">
-        <input class="btn-primary" type="submit" value="add">
-    </form>
-</div>`,
+    templateUrl: './todo.comp.html',
     controller: function () {
       var todoList = this;
       todoList.todos = [
