@@ -1,9 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {UpgradeModule} from "@angular/upgrade/static";
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 
-import '../old-app/app';
+import * as angular from 'angular';
+import { setAngularLib } from '@angular/upgrade/static';
 import '../old-app/todo'
 import '../old-app/components/todo'
 
@@ -12,9 +14,18 @@ import '../old-app/components/todo'
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    UpgradeModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  // bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private upgrade: UpgradeModule) {
+    setAngularLib(angular);
+  }
+
+  ngDoBootstrap() {
+    this.upgrade.bootstrap(document.body, ['todoApp'], {strictDi: true});
+  }
+}
