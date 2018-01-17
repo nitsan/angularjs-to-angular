@@ -1,13 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {UpgradeModule} from "@angular/upgrade/static";
-
+import 'angular';
+import {UpgradeModule} from '@angular/upgrade/static';
 import {AppComponent} from './app.component';
 
-import * as angular from 'angular';
-import { setAngularLib } from '@angular/upgrade/static';
-import '../old-app/todo'
-import '../old-app/components/todo'
+import '../old-app/todo';
+import '../old-app/components/todo';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,6 @@ import '../old-app/components/todo'
 })
 export class AppModule {
   constructor(private upgrade: UpgradeModule) {
-    setAngularLib(angular);
   }
 
   ngDoBootstrap() {
