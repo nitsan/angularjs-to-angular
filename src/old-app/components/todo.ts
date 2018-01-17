@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
 angular.module('todoApp')
-  .component('todo', {
+  .component('app-todo', {
     templateUrl: './todo.comp.html',
     controller: function () {
       var todoList = this;
